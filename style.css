@@ -1,0 +1,178 @@
+/* ===================================================
+   VARIABLES & REPO GLOBAL
+   =================================================== */
+:root {
+  --bg-color: #0d0818;
+  --card-bg: rgba(22, 16, 42, 0.85);
+  --neon-cyan: #00f3ff;
+  --neon-pink: #ff007f;
+  --neon-yellow: #ffe600;
+  --text-color: #ffffff;
+  --subtext-color: #a3a1c9;
+  --font-main: 'Ubuntu', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Fondo Estilo Malla Retro-Futurista */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(rgba(13, 8, 24, 0.8), rgba(13, 8, 24, 0.95)),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(255, 0, 127, 0.07) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  z-index: -1;
+}
+
+/* ===================================================
+   CONTENEDOR PRINCIPAL (LINKTREE ESTILO)
+   =================================================== */
+.main-content {
+  background: var(--card-bg);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  box-shadow: 0 0 25px rgba(0, 243, 255, 0.15),
+              inset 0 0 15px rgba(255, 0, 127, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 45px 30px;
+  width: 100%;
+  max-width: 440px;
+  text-align: center;
+  position: relative;
+}
+
+/* Detalle decorativo retro superior */
+.main-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-pink), transparent);
+  box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* ===================================================
+   HEADER & ENCABEZADOS
+   =================================================== */
+.title h1 {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 
+    0 0 5px var(--neon-cyan),
+    0 0 15px var(--neon-cyan),
+    0 0 30px rgba(0, 243, 255, 0.6);
+  margin-bottom: 8px;
+}
+
+.title p {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--neon-pink);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 35px;
+  text-shadow: 0 0 8px rgba(255, 0, 127, 0.5);
+}
+
+/* ===================================================
+   NAVEGACIÓN Y BOTONES
+   =================================================== */
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.itemlist {
+  width: 100%;
+}
+
+.itemlist a {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  background: rgba(13, 8, 24, 0.6);
+  border: 1px solid var(--neon-cyan);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+}
+
+/* Destello pasando a través del botón */
+.itemlist a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(255, 0, 127, 0.4), 
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+/* Interacción Hover (Al pasar el ratón) */
+.itemlist a:hover {
+  color: #fff;
+  border-color: var(--neon-pink);
+  background: rgba(255, 0, 127, 0.15);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.5),
+              0 0 30px rgba(0, 243, 255, 0.3);
+  text-shadow: 0 0 8px #fff;
+}
+
+.itemlist a:hover::before {
+  left: 100%;
+}
+
+/* Efecto al presionar (Active) */
+.itemlist a:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 0 10px rgba(255, 0, 127, 0.7);
+}
